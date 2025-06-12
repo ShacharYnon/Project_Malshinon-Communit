@@ -20,7 +20,6 @@ namespace Project_Malshinon_Communit.DAL
     {
         public static int GetIdByName(string FirstName, string LastName)
         {
-
             string connstring = "server=localhost;user=root;password=;database=malshinondb";
             try
             {
@@ -96,6 +95,148 @@ namespace Project_Malshinon_Communit.DAL
                 Console.WriteLine("General Error in CheckIfPersonExist: " + ex.Message);
             }
             return false;
+        }
+        public static int GetNumOfCharInText()
+        {
+            string connstring = "server=localhost;user=root;password=;database=malshinondb";
+            try
+            {
+                using (var connection = new MySqlConnection(connstring))
+                {
+                    connection.Open();
+                    string query = "SELECT CHARACTER_LENGTH(Texts) numChars FROM intelreports;";
+                    using (var cmd = new MySqlCommand(query, connection))
+                    {
+
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int num = reader.GetInt32("numChars");
+                                Console.WriteLine($"You have {num} of chars in the text! ");
+                                return num;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("MySQL Error in GetNumOfCharInText: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("General Error in GetNumOfCharInText: " + ex.Message);
+            }
+            return 0;
+
+        }
+        public static int GetNumForReportsById(int id )
+        {
+            string connstring = "server=localhost;user=root;password=;database=malshinondb";
+            try
+            {
+                using (var connection = new MySqlConnection(connstring))
+                {
+                    connection.Open();
+                    string query = "SELECT Num_reports FROM peoples WHERE Id = @Id ;";
+                    using (var cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Id",id);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int num = reader.GetInt32("Num_reports");
+                                Console.WriteLine($"You have {num} reports ! ");
+                                return num;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("MySQL Error in GetNumForReportsById: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("General Error in GetNumForReportsById: " + ex.Message);
+            }
+            return 0;
+
+        }
+        public static int intGetAverageOfCharactersByID(int id )
+        {
+            string connstring = "server=localhost;user=root;password=;database=malshinondb";
+            try
+            {
+                using (var connection = new MySqlConnection(connstring))
+                {
+                    connection.Open();
+                    string query = "SELECT AVG(CHARACTER_LENGTH(Texts)) AS avereg" +
+                        " FROM intelreports " +
+                        "WHERE ReporterId = @id ;";
+
+                    using (var cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int num = reader.GetInt32("avereg");
+                                Console.WriteLine($"You have {num} AVG in your reports! ");
+                                return num;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("MySQL Error in GetNumForReportsById: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("General Error in GetNumForReportsById: " + ex.Message);
+            }
+            return 0;
+        }
+        public static int GetNumMentionsById(int id)
+        {
+            string connstring = "server=localhost;user=root;password=;database=malshinondb";
+            try
+            {
+                using (var connection = new MySqlConnection(connstring))
+                {
+                    connection.Open();
+                    string query = "SELECT Num_mentions FROM peoples WHERE Id = @Id ;";
+                    using (var cmd = new MySqlCommand(query, connection))
+                    {
+                        cmd.Parameters.AddWithValue("@Id", id);
+                        using (var reader = cmd.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                int num = reader.GetInt32("Num_mentions");
+                                Console.WriteLine($"You have {num} reports ! ");
+                                return num;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (MySqlException ex)
+            {
+                Console.WriteLine("MySQL Error in GetNumMentionsById: " + ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("General Error in GetNumMentionsById: " + ex.Message);
+            }
+            return 0;
+
         }
     }
 }

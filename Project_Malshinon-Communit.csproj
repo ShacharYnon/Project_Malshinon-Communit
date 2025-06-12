@@ -96,12 +96,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisAndValidation\Analysis.cs" />
-    <Compile Include="AnalysisAndValidation\IntelReports.cs" />
+    <Compile Include="Models\IntelReports.cs" />
     <Compile Include="AnalysisAndValidation\IReportChecking.cs" />
     <Compile Include="DAL\DALPerson.cs" />
-    <Compile Include="AnalysisAndValidation\People.cs" />
+    <Compile Include="Models\People.cs" />
     <Compile Include="DAL\InformationUpdates.cs" />
-    <Compile Include="Management\Checking.cs" />
     <Compile Include="Management\Manager.cs" />
     <Compile Include="AnalysisAndValidation\Reporter.cs" />
     <Compile Include="DAL\Search.cs" />

@@ -23,7 +23,8 @@ namespace Project_Malshinon_Communit.Management
             }
 
             int IDReporter = Search.GetIdByName(names.FirstName, names.LastName);
-            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(reporterPerson.ToString());
             Console.ResetColor();
 
@@ -46,10 +47,35 @@ namespace Project_Malshinon_Communit.Management
             }
             IntelReports information = new IntelReports(text, IDTrget, IDReporter);
             InformationUpdates.ADDTextToTableIntelreports(information);
-            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(targetPerson.ToString());
             Console.ResetColor();
+
             DALPerson.UpdateNumMentions(IDTrget);
+
+            int numREports = Search.GetNumForReportsById(IDReporter);
+            if (numREports >= 10)
+            {
+                int avg = Search.intGetAverageOfCharactersByID(IDReporter);
+                if(avg >= 100)
+                {
+                    DALPerson.UpdateTypeByID(IDReporter, "potential_agent");
+                }
+            }
+
+            int NumMentions = Search.GetNumMentionsById(IDTrget);
+            if (NumMentions >= 20)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Potential threat detected !!!");
+                Console.ResetColor();
+            }
+
+
+
+
+
 
 
 
