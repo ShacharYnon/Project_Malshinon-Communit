@@ -73,7 +73,7 @@ namespace Project_Malshinon_Communit.DAL
                 Console.WriteLine("General Error in UpdateTypeByID: " + ex.Message);
             }
         }
-        public static void UpdateNumReports(int id) //, int reports = +1
+        public static void UpdateNumReports(int id) 
         {
             string connstring = "server=localhost;user=root;password=;database=malshinondb";
             try
@@ -87,7 +87,6 @@ namespace Project_Malshinon_Communit.DAL
                     using (var cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
-                        //cmd.Parameters.AddWithValue("@reports", reports);
                         cmd.ExecuteNonQuery();
                     }
                     Console.WriteLine("The Num of reports updated successfully! by id " + id);

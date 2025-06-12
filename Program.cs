@@ -14,14 +14,18 @@ namespace Project_Malshinon_Communit
     {
         static void Main(string[] args)
         {
-            //Manager start = new Manager();
-            //start.Run();
-            //string text = "yigtfuy07o jlivgcfgyhuoj ljbhvgjihkjGHG   gfYVFTYVG  KJHKJhjkjnhbhj KUTYGUJ";
-            //var ttt = Analysis.ExtractingNameFromText(text);
-            //Console.WriteLine(ttt);
-            ManageReport nagar = new ManageReport();
-            nagar.GetAllInfroFromReprter();
+            //ManageReport nagar = new ManageReport();
+            //nagar.GetAllInfroFromReprter();
+            int id = 1;
+            int numREports = Search.GetNumForReportsById();
+            if (numREports >= 10)
+            {
+                
+                Search.intGetAverageOfCharactersByID();
+            }
+            
+            Search.intGetAverageOfCharactersByID();
 
         }
-}
+    }
 }
