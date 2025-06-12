@@ -88,11 +88,16 @@ namespace Project_Malshinon_Communit.DAL
             }
             catch (MySqlException ex)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("MySQL Error in CheckIfPersonExist: " + ex.Message);
+                Console.ResetColor();
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("General Error in CheckIfPersonExist: " + ex.Message);
+                Console.ResetColor();
+
             }
             return false;
         }

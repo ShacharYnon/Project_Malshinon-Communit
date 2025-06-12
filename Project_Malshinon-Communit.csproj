@@ -96,8 +96,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnalysisAndValidation\Analysis.cs" />
+    <Compile Include="Interface\IReportChecking.cs" />
+    <Compile Include="Menu_and_designs\Colors.cs" />
+    <Compile Include="Menu_and_designs\Menu.cs" />
+    <Compile Include="Menu_and_designs\SystemDescription.cs" />
     <Compile Include="Models\IntelReports.cs" />
-    <Compile Include="AnalysisAndValidation\IReportChecking.cs" />
     <Compile Include="DAL\DALPerson.cs" />
     <Compile Include="Models\People.cs" />
     <Compile Include="DAL\InformationUpdates.cs" />

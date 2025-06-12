@@ -11,14 +11,14 @@ namespace Project_Malshinon_Communit.Management
 {
     internal class Manager
     {
-        private IReportChecking checking;
+        
         public void Run()
         {
-            //var names = Search.GetNameReporter();
-            //People person = new People(names.FirstName, names.LastName);
-            //Console.WriteLine(person.ToString());
-            //DALAddPerson.AddPersonToTable(person);
-            //ToString();
+
+
+
+            ManageReport nagar = new ManageReport();
+            nagar.GetAllInfroFromReprter();
 
         }
 

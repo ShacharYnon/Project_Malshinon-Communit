@@ -14,17 +14,8 @@ namespace Project_Malshinon_Communit
     {
         static void Main(string[] args)
         {
-            //ManageReport nagar = new ManageReport();
-            //nagar.GetAllInfroFromReprter();
-            int id = 1;
-            int numREports = Search.GetNumForReportsById();
-            if (numREports >= 10)
-            {
-                
-                Search.intGetAverageOfCharactersByID();
-            }
-            
-            Search.intGetAverageOfCharactersByID();
+            Manager start = new Manager();
+            start.Run();
 
         }
     }
