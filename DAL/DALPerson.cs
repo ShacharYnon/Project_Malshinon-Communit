@@ -8,6 +8,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using ZstdSharp.Unsafe;
+using Project_Malshinon_Communit.Menu_and_designs;
 
 namespace Project_Malshinon_Communit.DAL
 {
@@ -32,7 +33,7 @@ namespace Project_Malshinon_Communit.DAL
                         cmd.Parameters.AddWithValue("@Type" ,person.GetType());
                         cmd.ExecuteNonQuery();
                     }
-                    Console.WriteLine("Person added successfully! ");
+                    MyColors.Blue("Person added successfully! ");
                 }
             }
             catch (MySqlException ex)
@@ -61,7 +62,7 @@ namespace Project_Malshinon_Communit.DAL
                         cmd.Parameters.AddWithValue("@type", type);
                         cmd.ExecuteNonQuery();
                     }
-                    Console.WriteLine($"The type:{type} was updated successfully! to id {id} ");
+                    MyColors.Yellow($"The type:{type} was updated successfully! to id {id} ");
                 }
             }
             catch (MySqlException ex)
@@ -82,14 +83,14 @@ namespace Project_Malshinon_Communit.DAL
                 {
                     connection.Open();
                     string query = @"UPDATE peoples 
-                        SET Num_reports = +1 WHERE Id = @id;";
+                        SET Num_reports = Num_reports + 1 WHERE Id = @id;";
 
                     using (var cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
                         cmd.ExecuteNonQuery();
                     }
-                    Console.WriteLine("The Num of reports updated successfully! by id " + id);
+                    MyColors.Yellow("The Num of reports updated successfully! by id " + id);
                 }
             }
             catch (MySqlException ex)
@@ -110,15 +111,15 @@ namespace Project_Malshinon_Communit.DAL
                 {
                     connection.Open();
                     string query = @"UPDATE peoples 
-                        SET Num_mentions = +1 WHERE Id = @id;";
+                        SET Num_mentions = Num_mentions + 1 WHERE Id = @id;";
 
                     using (var cmd = new MySqlCommand(query, connection))
                     {
                         cmd.Parameters.AddWithValue("@id", id);
-                        //cmd.Parameters.AddWithValue("@mentions", mentions);
+                        
                         cmd.ExecuteNonQuery();
                     }
-                    Console.WriteLine("The Num of mentions updated successfully! by id " + id);
+                    MyColors.Yellow("The Num of reports updated successfully! by id " + id);
                 }
             }
             catch (MySqlException ex)

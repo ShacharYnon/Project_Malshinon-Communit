@@ -171,7 +171,7 @@ namespace Project_Malshinon_Communit.DAL
             return 0;
 
         }
-        public static int intGetAverageOfCharactersByID(int id )
+        public static int GetAverageOfCharactersByID(int id )
         {
             string connstring = "server=localhost;user=root;password=;database=malshinondb";
             try
@@ -225,7 +225,7 @@ namespace Project_Malshinon_Communit.DAL
                             if (reader.Read())
                             {
                                 int num = reader.GetInt32("Num_mentions");
-                                Console.WriteLine($"You have {num} reports ! ");
+                                Console.WriteLine($"You have {num} mentions ! ");
                                 return num;
                             }
                         }

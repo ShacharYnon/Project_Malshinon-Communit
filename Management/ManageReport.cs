@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Project_Malshinon_Communit.Menu_and_designs;
 
 namespace Project_Malshinon_Communit.Management
 {
@@ -24,13 +25,13 @@ namespace Project_Malshinon_Communit.Management
 
             int IDReporter = Search.GetIdByName(names.FirstName, names.LastName);
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(reporterPerson.ToString());
-            Console.ResetColor();
 
-            DALPerson.UpdateNumReports(IDReporter);
+            MyColors.Green(reporterPerson.ToString());
+
 
             var text = Reporter.GetTextFromReporter();
+            DALPerson.UpdateNumReports(IDReporter);
+
             var FirstAndLastName = Analysis.ExtractingNameFromText(text);
             People targetPerson = new People(FirstAndLastName.FirstName, FirstAndLastName.LastName);
             int IDTrget = 0;
@@ -39,25 +40,24 @@ namespace Project_Malshinon_Communit.Management
                 DALPerson.AddPersonToTable(targetPerson);
                 IDTrget = Search.GetIdByName(FirstAndLastName.FirstName, FirstAndLastName.LastName);
                 DALPerson.UpdateTypeByID(IDTrget, "target");
+                DALPerson.UpdateNumMentions(IDTrget);
             }
             else 
             {
                 IDTrget = Search.GetIdByName(FirstAndLastName.FirstName, FirstAndLastName.LastName);
                 DALPerson.UpdateTypeByID(IDTrget, "target");
+                DALPerson.UpdateNumMentions(IDTrget);
             }
             IntelReports information = new IntelReports(text, IDTrget, IDReporter);
             InformationUpdates.ADDTextToTableIntelreports(information);
 
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine(targetPerson.ToString());
-            Console.ResetColor();
+            MyColors.Green(targetPerson.ToString());
 
-            DALPerson.UpdateNumMentions(IDTrget);
 
             int numREports = Search.GetNumForReportsById(IDReporter);
             if (numREports >= 10)
             {
-                int avg = Search.intGetAverageOfCharactersByID(IDReporter);
+                int avg = Search.GetAverageOfCharactersByID(IDReporter);
                 if(avg >= 100)
                 {
                     DALPerson.UpdateTypeByID(IDReporter, "potential_agent");
@@ -67,19 +67,8 @@ namespace Project_Malshinon_Communit.Management
             int NumMentions = Search.GetNumMentionsById(IDTrget);
             if (NumMentions >= 20)
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Potential threat detected !!!");
-                Console.ResetColor();
+                MyColors.Red("Potential threat detected !!!");
             }
-
-
-
-
-
-
-
-
-
         }
 
     }

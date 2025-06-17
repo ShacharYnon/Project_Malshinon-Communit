@@ -1,6 +1,7 @@
 ﻿using Google.Protobuf.Compiler;
 using MySql.Data.MySqlClient;
 using Project_Malshinon_Communit.AnalysisAndValidation;
+using Project_Malshinon_Communit.Menu_and_designs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,7 @@ namespace Project_Malshinon_Communit.DAL
                         cmd.Parameters.AddWithValue("@ReporterId", report.GetReporterId());
                         cmd.ExecuteNonQuery();
                     }
-                    Console.WriteLine("The text was successfully inserted into the table! ");
+                    MyColors.Blue("The text was successfully inserted into the table! ");
                 }
             }
             catch (MySqlException ex)

@@ -10,18 +10,12 @@ using Project_Malshinon_Communit.NewFolder1;
 namespace Project_Malshinon_Communit.Management
 {
     internal class Manager
-    {
-        
+    {   
         public void Run()
         {
-
-
-
             ManageReport nagar = new ManageReport();
             nagar.GetAllInfroFromReprter();
 
         }
-
-
     }
 }
